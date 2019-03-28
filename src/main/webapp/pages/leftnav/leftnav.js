@@ -1,9 +1,5 @@
-/*
- * Use App.getDependency for Dependency Injection
- * eg: var DialogService = App.getDependency('DialogService');
- */
-
 /* perform any action on widgets/variables within this block */
+
 Partial.onReady = function () {
     /*
      * variables can be accessed through 'Partial.Variables' property here
@@ -14,4 +10,10 @@ Partial.onReady = function () {
      * e.g. to get value of text widget named 'username' use following script
      * 'Partial.Widgets.username.datavalue'
      */
+
 };
+
+Partial.trimDataLeftUI = function ($event, widget, selectedValue) {
+    return _.trim(Partial.Widgets.search1.datavalue, "#/");
+};
+

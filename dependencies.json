@@ -1,6 +1,11 @@
 [ {
-  "name" : "material",
-  "version" : "3.9",
+  "name" : "googlemaps",
+  "version" : "6.3",
+  "artifactType" : "PREFAB",
+  "artifactDependencyList" : null
+}, {
+  "name" : "vermillion",
+  "version" : "3.8",
   "artifactType" : "THEME",
   "artifactDependencyList" : null
 } ]

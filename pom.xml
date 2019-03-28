@@ -2,7 +2,7 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wavemaker.project</groupId>
-    <artifactId>VMFinal</artifactId>
+    <artifactId>WMTheme</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
     <build>
@@ -13,13 +13,62 @@
             </resource>
             <resource>
                 <filtering>true</filtering>
+                <directory>services/CountryInfoService/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/FileService/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/github/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/hrdb/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/randomuser/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
                 <directory>services/securityService/src</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
                 </excludes>
             </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/wavemakeronline/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <filtering>true</filtering>
+                <directory>services/websocket/src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
         </resources>
-        <finalName>VMFinal</finalName>
+        <finalName>WMTheme</finalName>
         <filters>
             <filter>profiles/${profile.props.file}/</filter>
         </filters>
@@ -39,14 +88,14 @@
                                         <versionRange>[1.7,)</versionRange>
                                         <goals>
                                             <goal>run</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
+                    </goals>
+                  </pluginExecutionFilter>
                                     <action>
                                         <ignore/>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -70,7 +119,7 @@
                         <configuration>
                             <files>
                                 <file>profiles/${profile.props.file}</file>
-                            </files>
+              </files>
                         </configuration>
                     </execution>
                 </executions>
@@ -87,32 +136,30 @@
                             <goal>execute</goal>
                         </goals>
                         <configuration>
-                            <source>
-                                if (project.properties.get('build.ui.mode') != null) {
+                            <source>if (project.properties.get('build.ui.mode') != null) {
                                     if (project.properties.get('build.ui.mode').equalsIgnoreCase('angular')) {
                                         project.properties.webAppDirectory = 'target/codegen/generated-app/dist'
                                     }
                                 }
                                 if (project.properties.get('webAppDirectory') == null) {
                                     project.properties.webAppDirectory = 'src/main/webapp'
-                                }
-                            </source>
+                                }</source>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.1</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
                 <configuration>
-                    <nonFilteredFileExtensions>
-                        <nonFilteredFileExtension>jks</nonFilteredFileExtension>
-                    </nonFilteredFileExtensions>
+                    <webResources>
+                        <resource>
+                            <directory>${webAppDirectory}</directory>
+            </resource>
+          </webResources>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
                 <version>2.4.1</version>
                 <executions>
@@ -125,11 +172,11 @@
                     <filesets>
                         <fileset>
                             <directory>${basedir}/src/main/webapp/WEB-INF/lib</directory>
-                        </fileset>
+            </fileset>
                         <fileset>
                             <directory>${basedir}/src/main/webapp/WEB-INF/classes</directory>
-                        </fileset>
-                    </filesets>
+            </fileset>
+          </filesets>
                 </configuration>
             </plugin>
             <plugin>
@@ -145,14 +192,20 @@
                         </goals>
                         <configuration>
                             <sources>
+                                <source>services/CountryInfoService/src</source>
+                                <source>services/FileService/src</source>
+                                <source>services/github/src</source>
+                                <source>services/hrdb/src</source>
+                                <source>services/randomuser/src</source>
                                 <source>services/securityService/src</source>
+                                <source>services/wavemakeronline/src</source>
+                                <source>services/websocket/src</source>
                             </sources>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>1.7</version>
                 <executions>
@@ -165,7 +218,7 @@
                         <configuration>
                             <target>
                                 <ant antfile="${basedir}/build.xml" target="init"/>
-                            </target>
+              </target>
                         </configuration>
                     </execution>
                     <execution>
@@ -177,13 +230,12 @@
                         <configuration>
                             <target>
                                 <ant antfile="${basedir}/build.xml" target="uiBuild"/>
-                            </target>
+              </target>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
@@ -208,6 +260,15 @@
                 </executions>
             </plugin>
             <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>jks</nonFilteredFileExtension>
+          </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>com.wavemaker.app.build</groupId>
                 <artifactId>wavemaker-app-package-maven-plugin</artifactId>
                 <version>${wavemaker.studio.version}</version>
@@ -220,18 +281,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.4</version>
-                <configuration>
-                    <webResources>
-                        <resource>
-                            <directory>${webAppDirectory}</directory>
-                        </resource>
-                    </webResources>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -275,7 +324,6 @@
             <id>central</id>
             <name>Maven Repository Switchboard</name>
             <url>http://repo1.maven.org/maven2</url>
-            <layout>default</layout>
         </repository>
         <repository>
             <releases>
@@ -311,6 +359,16 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -338,14 +396,14 @@
         </dependencies>
     </dependencyManagement>
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.lib.directory>${basedir}/lib</project.lib.directory>
-        <profile.props.file>development.properties</profile.props.file>
-        <spring.version>5.1.4.RELEASE</spring.version>
-        <spring.security.version>5.0.8.RELEASE</spring.security.version>
         <wavemaker.studio.version>9.9.9</wavemaker.studio.version>
-        <wavemaker.artifactType>wmapp</wavemaker.artifactType>
+        <spring.security.version>5.0.8.RELEASE</spring.security.version>
+        <profile.props.file>development.properties</profile.props.file>
+        <project.lib.directory>${basedir}/lib</project.lib.directory>
         <wavemaker.artifactStaticFolder>wmapp</wavemaker.artifactStaticFolder>
         <wavemaker.studio.release.version>10.0.0</wavemaker.studio.release.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <wavemaker.artifactType>wmapp</wavemaker.artifactType>
+        <spring.version>5.1.4.RELEASE</spring.version>
     </properties>
 </project>

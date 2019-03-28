@@ -1,0 +1,6 @@
+{
+  "id" : "CountryInfoService",
+  "type" : "SoapService",
+  "packageNames" : [ "com.wmtheme.services.countryinfoservice" ],
+  "title" : "CountryInfoService"
+}

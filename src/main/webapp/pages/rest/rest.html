@@ -1,0 +1,35 @@
+<wm-page pagetitle="Rest" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-table name="randomuserTable1" title="" dataset="bind:Variables.RandomuserInvoke.dataSet.results" navigation="Basic">
+                <wm-table-column binding="nat" caption="Nat" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="gender" caption="Gender" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="phone" caption="Phone" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="cell" caption="Cell" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="email" caption="Email" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="dob.date" caption="Dob Date" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="dob.age" caption="Dob Age" pcdisplay="true" mobiledisplay="true" type="integer"></wm-table-column>
+                <wm-table-column binding="name.last" caption="Name Last" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="name.title" caption="Name Title" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="name.first" caption="Name First" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+            </wm-table>
+            <wm-chart type="Line" title="Line Chart" height="250px" iconclass="wi wi-line-chart" name="chart1" dataset="bind:Variables.webSocketVariable1.dataSet" xaxisdatakey="time" yaxisdatakey="value"></wm-chart>
+            <wm-table title="" dataset="bind:Variables.CountryInfoServiceFullCountryInfoAllCountries.dataSet.fullCountryInfoAllCountriesResult.tCountryInfo" navigation="Basic" name="table2">
+                <wm-table-column binding="sPhoneCode" caption="S Phone Code" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="sCurrencyISOCode" caption="S Currency Iso Code" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="sName" caption="S Name" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="sCapitalCity" caption="S Capital City" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="sisoCode" caption="Siso Code" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="sContinentCode" caption="S Continent Code" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="sCountryFlag" widget-type="image" caption="S Country Flag" pcdisplay="true" mobiledisplay="true" type="string">
+                    <wm-picture picturesource="bind:row.getProperty('sCountryFlag')" hint="bind:row.getProperty('sCountryFlag')" class="" conditionalclass=""></wm-picture>
+                </wm-table-column>
+                <wm-table-column binding="languages.tLanguage[0].sisoCode" caption="Languages.tlanguage[0] Siso Code" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                <wm-table-column binding="languages.tLanguage[0].sName" caption="Languages.tlanguage[0] S Name" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+            </wm-table>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>
